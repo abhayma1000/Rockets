@@ -33,7 +33,7 @@ void setup() {
   // initialize the LED pin as an output:
   pinMode(LED_BUILTIN, OUTPUT);
   // initialize the pushbutton pin as an input:
-  pinMode(buttonPin, INPUT);
+  pinMode(buttonPin, INPUT_PULLUP);
 }
 
 void loop() {
