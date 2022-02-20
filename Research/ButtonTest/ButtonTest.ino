@@ -51,7 +51,7 @@ void loop() {
 
   Serial.println(buttonState);
 
-  delay(500);
+  delay(50);
 
   
 }
