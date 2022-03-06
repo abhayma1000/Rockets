@@ -4,7 +4,7 @@
 #include <RF24.h>
 
 //create an RF24 object
-RF24 radio(9, 8);  // CE, CSN
+RF24 radio(7, 8);  // CE, CSN
 
 //address through which two modules communicate.
 const byte address[6] = "00001";
@@ -22,6 +22,6 @@ void setup()
 void loop()
 {
   //Send message to receiver
-  const char text[] = "Hello World";
+  const char text[] = "CBT";
   radio.write(&text, sizeof(text));
 }
