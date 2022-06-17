@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+//WIP
+>>>>>>> Stashed changes
 //states: pre-setup, setup, logging, after: 0, 1, 2, 3
 
 int state = 0;
