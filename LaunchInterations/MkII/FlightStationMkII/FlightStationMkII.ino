@@ -57,16 +57,20 @@ void loop() {
   }
 
   if(state == 0) {
+    digitalWrite(LED_BUILTIN, HIGH);
 
+    delay(3000);
+
+    digitalWrite(LED_BUILTIN, LOW);
   }
 
   if(state == 1) {
     digitalWrite(LED_BUILTIN, HIGH);
 
-    delay(1000);
+    delay(500);
 
     digitalWrite(LED_BUILTIN, LOW);
 
-    delay(1000);    
+    delay(500);    
   }
 }
