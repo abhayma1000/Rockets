@@ -47,7 +47,7 @@ void loop() {
       }
     }
 
-    if(state == 1) {
+    else if(state == 1) {
       if(text == "kill launch...") {
         state == 0;
       }
