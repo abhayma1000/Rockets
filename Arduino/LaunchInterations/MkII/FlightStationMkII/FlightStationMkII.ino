@@ -61,12 +61,14 @@ void loop() {
 
     else if(state == 1) {
       if(str_text == "kill launch...") {
-        state == 0;
+        state = 0;
       }
     }
     
 
   }
+
+  Serial.println("State: " + state);
 
   if(state == 0) {
     digitalWrite(LED_BUILTIN, HIGH);
