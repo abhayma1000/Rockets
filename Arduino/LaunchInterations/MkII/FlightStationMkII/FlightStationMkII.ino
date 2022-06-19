@@ -19,6 +19,8 @@ void setup() {
 
   pinMode(LED_BUILTIN, OUTPUT);
 
+  Serial.begin(9600);
+
   
   radio.begin();
 
@@ -27,6 +29,10 @@ void setup() {
   radio.setPALevel(RF24_PA_MIN);
 
   radio.startListening();
+
+  Serial.println("Ready for commands...");
+
+  Serial.println("\n");
 }
 
 void loop() {
@@ -37,18 +43,24 @@ void loop() {
 
     radio.read(&text, sizeof(text));
 
-    Serial.println(text);
+    String str_text = String(text);
 
-
+    Serial.println(str_text);
 
     if(state == 0) {
-      if(text == "activate launch...") {
+      Serial.println("Str text is: " + str_text);
+
+      if("a" == "a") {
+        Serial.println("They equal");
         state = 1;
+      }
+      else {
+        Serial.println("They dont equal");
       }
     }
 
     else if(state == 1) {
-      if(text == "kill launch...") {
+      if(str_text == "kill launch...") {
         state == 0;
       }
     }
@@ -65,6 +77,7 @@ void loop() {
   }
 
   if(state == 1) {
+    Serial.println("Am here");
     digitalWrite(LED_BUILTIN, HIGH);
 
     delay(500);
