@@ -15,6 +15,8 @@ void setup()
   
   //set the address
   radio.openWritingPipe(address);
+
+  radio.setPALevel(RF24_PA_MIN);
   
   //Set module as transmitter
   radio.stopListening();
@@ -24,4 +26,6 @@ void loop()
   //Send message to receiver
   const char text[] = "CBT";
   radio.write(&text, sizeof(text));
+
+  delay(1000);
 }
