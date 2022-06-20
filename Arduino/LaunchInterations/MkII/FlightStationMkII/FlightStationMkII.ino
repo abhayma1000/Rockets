@@ -1,9 +1,3 @@
-//Just Arduino Nano, RF module, and battery
-//Once signal is sent to nano via RF, just blinks
-//Once another signal is sent to nano via RF, stops blinking
-//Meant to show RF module works
-//WIP
-
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>

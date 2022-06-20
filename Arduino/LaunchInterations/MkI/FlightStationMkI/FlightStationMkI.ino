@@ -1,8 +1,3 @@
-//Just Arduino Nano, button, and battery
-//Ones button is pressed, just blinks. Otherwise, doesn't do anything
-//Meant to show battery stays in
-//Works
-
 int state = 0;
 
 int button_pin = 2;
