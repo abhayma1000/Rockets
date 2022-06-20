@@ -49,12 +49,16 @@ void loop() {
 
     String str_text = String(text);
 
-    Serial.println(str_text);
+    Serial.println(sizeof(text));
+
+    Serial.println("Character at 8: ");
+
+    Serial.println(text[8]);
 
     if(state == 0) {
-      Serial.println("Str text is: " + str_text);
 
-      if("a" == "a") {
+
+      if("a" == "b") {
         Serial.println("They equal");
         state = 1;
       }
