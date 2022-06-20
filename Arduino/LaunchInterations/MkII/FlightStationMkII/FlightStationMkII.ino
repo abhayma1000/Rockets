@@ -17,15 +17,10 @@ int state = 0;
 int led = 5;
 
 void setup() {
-  // put your setup code here, to run once:
-
   pinMode(led, OUTPUT);
 
   digitalWrite(led, LOW);
 
-  Serial.begin(9600);
-
-  
   radio.begin();
 
   radio.openReadingPipe(0, address);
@@ -34,14 +29,14 @@ void setup() {
 
   radio.startListening();
 
+  Serial.begin(9600);
+
   Serial.println("Ready for commands...");
 
   Serial.println("\n");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
   if (radio.available()) {
     char text[32] = "";
 
@@ -49,26 +44,54 @@ void loop() {
 
     String str_text = String(text);
 
-    Serial.println(sizeof(text));
+    Serial.println("Received text:");
 
-    Serial.println("Character at 8: ");
+    Serial.println(text);
 
-    Serial.println(text[8]);
+    char first_case[] =  {'l', 'a', 'u', 'n', 'c', 'h'};
+
+    char second_case[] = {'k', 'i', 'l', 'l'};
+
+
+
+    bool equals_first = true;
+    bool equals_second = true;
+
+    for (int i = 0; i < sizeof(first_case); i++) {
+      if (text[i] != first_case[i]) {
+        equals_first = false;
+      }
+    }
+
+    for (int i = 0; i < sizeof(second_case); i++) {
+      if (text[i] != second_case[i]) {
+        equals_second = false;
+      }
+    }
+
+
+
 
     if(state == 0) {
 
 
-      if("a" == "b") {
-        Serial.println("They equal");
+      if(equals_first) {
+        Serial.println("Equals first");
         state = 1;
+
+        Serial.println("\n\n");
       }
       else {
-        Serial.println("They dont equal");
+        Serial.println("Doesnt equal first");
+
+        Serial.println("\n\n");
       }
     }
 
     else if(state == 1) {
-      if(str_text == "kill launch...") {
+      if(equals_second) {
+        Serial.println("Equals second");
+
         state = 0;
 
         digitalWrite(led, HIGH);
@@ -76,6 +99,8 @@ void loop() {
         delay(3000);
 
         digitalWrite(led, LOW);
+
+        Serial.println("\n\n");
       }
     }
     
@@ -92,4 +117,15 @@ void loop() {
     digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
     delay(1000);      
   }
+}
+
+bool char_equal(char inputted[], char actual[]) {
+
+  for (int i = 0; i < sizeof(actual); i++) {
+    if (actual[i] != inputted[i]) {
+      return false;
+    }
+  }
+
+  return true;
 }
