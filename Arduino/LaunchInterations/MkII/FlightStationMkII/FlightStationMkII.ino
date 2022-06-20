@@ -14,10 +14,14 @@ const byte address[6] = "00001";
 
 int state = 0;
 
+int led = 5;
+
 void setup() {
   // put your setup code here, to run once:
 
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(led, OUTPUT);
+
+  digitalWrite(led, LOW);
 
   Serial.begin(9600);
 
@@ -62,30 +66,26 @@ void loop() {
     else if(state == 1) {
       if(str_text == "kill launch...") {
         state = 0;
+
+        digitalWrite(led, HIGH);
+
+        delay(3000);
+
+        digitalWrite(led, LOW);
       }
     }
     
 
   }
 
-  Serial.println("State: " + state);
-
   if(state == 0) {
-    digitalWrite(LED_BUILTIN, HIGH);
-
-    delay(3000);
-
-    digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(led, LOW);
   }
 
   if(state == 1) {
-    Serial.println("Am here");
-    digitalWrite(LED_BUILTIN, HIGH);
-
-    delay(500);
-
-    digitalWrite(LED_BUILTIN, LOW);
-
-    delay(500);    
+    digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
+    delay(1000);                       // wait for a second
+    digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
+    delay(1000);      
   }
 }
