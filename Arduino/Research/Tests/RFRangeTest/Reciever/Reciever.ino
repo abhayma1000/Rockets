@@ -11,6 +11,9 @@ int state = 0;
 int led = 5;
 
 void setup() {
+
+  Serial.begin(9600);
+  
   pinMode(led, OUTPUT);
 
   digitalWrite(led, LOW);
@@ -22,10 +25,12 @@ void setup() {
   radio.setPALevel(RF24_PA_MIN);
 
   radio.startListening();
+  
 
 }
 
 void loop() {
+  
   if (radio.available()) {
     char text[32] = "";
 
@@ -44,21 +49,20 @@ void loop() {
     }
 
     if (equals_case) {
-      switch (state) {
-        case 0:
-          state = 1;
-        case 1:
-          state = 0; 
+      Serial.println("Signal received...");
+      if (state == 0) {
+        state = 1;
+      }
+      else if (state == 1) {
+        state = 0;
       }
     }
-
-  }   
+  }
 
   if (state == 0) {
-    digitalWrite(led, HIGH);
-  }
-  else if (state == 1) {
     digitalWrite(led, LOW);
   }
-
+  else if (state == 1) {
+    digitalWrite(led, HIGH);
+  }
 }
