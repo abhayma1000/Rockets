@@ -29,8 +29,8 @@ void loop() {
   // put your main code here, to run repeatedly:
 
   if (Serial.available() == 1) {
-    Serial.println("\n\n");
-
+    Serial.println();
+    
     String str_message = Serial.readString();
 
     Serial.print("Message: " + str_message);
