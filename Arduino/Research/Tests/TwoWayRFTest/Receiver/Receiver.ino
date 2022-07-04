@@ -42,10 +42,12 @@ void loop() {
 
     radio.stopListening();
 
-    String str_sending_message = "Acknowledgement...";
+    String str_sending_text = "Acknowledgement...";
 
-    str_message.toCharArray(sending_text, 50);
+    str_sending_text.toCharArray(sending_text, 50);
 
-    radio.write(&sending_message, sizeof(sending_message));
+    radio.write(&sending_text, sizeof(sending_text));
+
+    Serial.println("Sent acknowledgement...");
   }
 }
