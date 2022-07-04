@@ -22,7 +22,7 @@ void setup() {
 
   radio.openReadingPipe(0, address);
 
-  radio.setPALevel(RF24_PA_MIN); // RF24_PA_MIN, RF24_PA_LOW, RF24_PA_MED, RF24_PA_HIGH
+  radio.setPALevel(RF24_PA_MIN);
 
   radio.startListening();
   
