@@ -13,7 +13,7 @@ void setup() {
   //set the address
   radio.openWritingPipe(address);
 
-  radio.setPALevel(RF24_PA_MIN);
+  radio.setPALevel(RF24_PA_MIN); // RF24_PA_MIN, RF24_PA_LOW, RF24_PA_MED, RF24_PA_HIGH
   
   //Set module as transmitter
   radio.stopListening();
