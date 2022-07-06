@@ -42,6 +42,8 @@ void loop() {
     if (radio.available()) {
       char incoming_text[50] = "";
 
+      Serial.println("Received something");
+
       radio.read(&incoming_text, sizeof(incoming_text));
 
       String str_incoming_text = String(incoming_text);
