@@ -38,40 +38,40 @@ void setup() {
 
 void loop() {
 
-if (radio.available()) {
-  char text[32] = "";
+  if (radio.available()) {
+    char text[32] = "";
 
-  radio.read(&text, sizeof(text));
+    radio.read(&text, sizeof(text));
 
-  Serial.println("Received test: ");
+    Serial.println("Received test: ");
 
-  String str_text = String(text);
+    String str_text = String(text);
 
-  Serial.println(text);
+    Serial.println(text);
 
-  char test_case[] =  {'l', 'a', 'u', 'n', 'c', 'h'};
+    char test_case[] =  {'l', 'a', 'u', 'n', 'c', 'h'};
 
-  bool equals_case = true;
+    bool equals_case = true;
 
-  for (int i = 0; i < sizeof(test_case); i++) {
-      if (text[i] != test_case[i]) {
-        equals_case = false;
+    for (int i = 0; i < sizeof(test_case); i++) {
+        if (text[i] != test_case[i]) {
+          equals_case = false;
+        }
+      }
+
+    if (equals_case) {
+      for (pos = upper_bound; pos >= lower_bound; pos -= 1) {
+        myservo.write(pos);
+
+        delay(15);
+      }
+      for (pos = lower_bound; pos <= upper_bound; pos += 1) {
+        myservo.write(pos);
+      
+        delay(15);
       }
     }
 
-  if (equals_case) {
-    for (pos = lower_bound; pos <= upper_bound; pos += 1) {
-      myservo.write(pos);
-    
-      delay(15);
-    }
-    for (pos = upper_bound; pos >= lower_bound; pos -= 1) {
-      myservo.write(pos);
-
-      delay(15);
-    }
+    Serial.println("Successfully launched...");
   }
-
-  Serial.println("Successfully launched...");
 }
-
