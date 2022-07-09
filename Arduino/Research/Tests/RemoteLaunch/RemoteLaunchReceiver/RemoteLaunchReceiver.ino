@@ -5,7 +5,7 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
-RF24 radio(7, 8)
+RF24 radio(7, 8);
 
 const byte address[6] = "00001";
 
@@ -15,7 +15,7 @@ int pos = 0;
 
 int lower_bound = 20;
 
-int upper_bound = 150
+int upper_bound = 150;
 
 void setup() {
   Serial.begin(9600);
@@ -31,7 +31,9 @@ void setup() {
 
   radio.startListening();
 
-  Serial.println("Waiting for command...");
+  Serial.println("Ready for commands...");
+
+  Serial.println("\n");
 }
 
 void loop() {
@@ -41,7 +43,11 @@ if (radio.available()) {
 
   radio.read(&text, sizeof(text));
 
+  Serial.println("Received test: ");
+
   String str_text = String(text);
+
+  Serial.println(text);
 
   char test_case[] =  {'l', 'a', 'u', 'n', 'c', 'h'};
 
