@@ -11,16 +11,22 @@ const byte address[6] = "00001";
 
 Servo myservo;
 
-int pos = 0;
-
-int lower_bound = 20;
+int lower_bound = 50;
 
 int upper_bound = 150;
+
+int pos = upper_bound;
 
 void setup() {
   Serial.begin(9600);
   
   myservo.attach(9);
+
+  myservo.write(upper_bound);
+  delay(4000);
+  myservo.write(lower_bound);
+  delay(1000);
+  myservo.write(upper_bound);
 
 
   radio.begin();
@@ -60,16 +66,15 @@ void loop() {
       }
 
     if (equals_case) {
-      for (pos = upper_bound; pos >= lower_bound; pos -= 1) {
-        myservo.write(pos);
+      myservo.write(upper_bound);
 
-        delay(15);
-      }
-      for (pos = lower_bound; pos <= upper_bound; pos += 1) {
-        myservo.write(pos);
-      
-        delay(15);
-      }
+      delay(4000);
+
+      myservo.write(lower_bound);
+
+      delay(1000);
+
+      myservo.write(upper_bound);
     }
 
     Serial.println("Successfully launched...");
