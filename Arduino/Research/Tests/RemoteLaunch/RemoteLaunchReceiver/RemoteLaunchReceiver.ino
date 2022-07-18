@@ -11,9 +11,9 @@ const byte address[6] = "00001";
 
 Servo myservo;
 
-int lower_bound = 50;
+int lower_bound = 40;
 
-int upper_bound = 150;
+int upper_bound = 170;
 
 int pos = upper_bound;
 
@@ -25,7 +25,7 @@ void setup() {
   myservo.write(upper_bound);
   delay(4000);
   myservo.write(lower_bound);
-  delay(1000);
+  delay(4000);
   myservo.write(upper_bound);
 
 
@@ -72,7 +72,7 @@ void loop() {
 
       myservo.write(lower_bound);
 
-      delay(1000);
+      delay(4000);
 
       myservo.write(upper_bound);
     }
