@@ -23,11 +23,6 @@ void setup() {
   myservo.attach(9);
 
   myservo.write(upper_bound);
-  delay(4000);
-  myservo.write(lower_bound);
-  delay(4000);
-  myservo.write(upper_bound);
-
 
   radio.begin();
 
