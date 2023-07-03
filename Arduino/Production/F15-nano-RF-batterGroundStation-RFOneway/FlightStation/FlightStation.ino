@@ -16,13 +16,13 @@ void setup() {
 }
 
 void loop() {
-  String str_message = "Transmitting: OK" + str(millis());
+  String str_message = String(millis());
   char message[50];
   str_message.toCharArray(message, 50);
   radio.write(&message, sizeof(message));
 
-  digitalWrite(led, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
   delay(500);
-  digitalWrite(led, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH);
   delay(500);
 }
